@@ -1,4 +1,5 @@
 import graphene
+from graphql_jwt.decorators import login_required
 
 from .types import EventType
 from .models import Event
@@ -12,12 +13,12 @@ class AddEvent(graphene.Mutation):
         url = graphene.String(required=True)
         name = graphene.String()
 
+    @login_required
     def mutate(self, info, **kwargs):
         _event = Event.objects.create(**kwargs)
 
         # Notice we return an instance of this mutation
         return AddEvent(event=_event)
-
 
 
 class Query(object):

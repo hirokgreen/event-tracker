@@ -138,3 +138,7 @@ GRAPHENE = {
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
     )
 }
+
+GRAPHQL_JWT = {
+    'JWT_ALLOW_ARGUMENT': True,
+}
